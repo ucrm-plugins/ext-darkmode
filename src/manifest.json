@@ -1,0 +1,28 @@
+{
+    "version": "1",
+    "information": {
+        "name": "ext-darkmode",
+        "displayName": "Dark Mode",
+        "description": "A super-simple dark mode plugin for UCRM.",
+        "url": "https://github.com/ucrm-plugins/ext-darkmode.git",
+        "version": "1.0.13",
+        "unmsVersionCompliancy": {
+            "min": "2.0.0",
+            "max": null
+        },
+        "ucrmVersionCompliancy": {
+            "min": "3.0.0",
+            "max": null
+        },
+        "author": "Ryan Spaeth <rspaeth@spaethtech.com>"
+    },
+    "configuration": [
+        {
+            "key": "logErrors",
+            "label": "Log Errors?",
+            "description": "When enabled, errors are shown in the Plugin's log file.",
+            "type": "checkbox",
+            "required": 0
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+html {
+    filter: invert(100%) hue-rotate(180deg);
+}
+
+/* FUTURE: Include any other CSS that users suggest here... */

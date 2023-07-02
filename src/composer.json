@@ -1,0 +1,39 @@
+{
+    "name": "ucrm-plugins/ext-darkmode",
+    "description": "A super-simple dark mode plugin for UCRM.",
+    "type": "project",
+    "license": "MIT",
+    "homepage": "https://gitlab.com/ucrm-plugins/ext-darkmode.git",
+    "authors": [
+        {
+            "name": "Ryan Spaeth",
+            "email": "rspaeth@spethtech.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.1",
+        "monolog/monolog": "^3.4",
+        "ucrm-plugins/sdk-common": "@dev"
+    },
+    "autoload": {
+        "files": [ "globals.php" ]
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../../lib/*",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../../../../../spaethtech/php-monorepo/lib/*",
+            "options": {
+                "symlink": true
+            }
+        }
+    ]
+}
