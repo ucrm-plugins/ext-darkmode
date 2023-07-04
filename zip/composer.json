@@ -14,8 +14,7 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.1",
-        "monolog/monolog": "^3.4",
-        "ucrm-plugins/sdk-common": "@dev"
+        "monolog/monolog": "^3.4"
     },
     "autoload": {
         "files": [ "globals.php" ]
@@ -23,7 +22,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../../../lib/*",
+            "url": "../../../sdk/*",
             "options": {
                 "symlink": true
             }

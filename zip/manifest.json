@@ -1,7 +1,7 @@
 {
     "version": "1",
     "information": {
-        "name": "ext-darkmode",
+        "name": "darkmode",
         "displayName": "Dark Mode",
         "description": "A super-simple dark mode plugin for UCRM.",
         "url": "https://github.com/ucrm-plugins/ext-darkmode.git",

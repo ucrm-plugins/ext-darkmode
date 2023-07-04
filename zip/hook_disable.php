@@ -14,24 +14,25 @@ $logger->pushHandler(new StreamHandler(PLUGIN_DIR."/data/plugin.log"));
 const TWIG_HTML_FILE = "/usr/src/ucrm/app/Resources/views/base.html.twig";
 const TWIG_CACHE_DIR = "/usr/src/ucrm/app/cache/prod/twig";
 
+$plugin = PLUGIN_NAME;
 $changed = false;
+
 $html = file_get_contents(TWIG_HTML_FILE);
-$href = "/crm/_plugins/ext-darkmode/public/css/darkmode.css?ver=".PLUGIN_VERSION;
-$link = "<link rel=\"stylesheet\" href=\"$href\">";
-$tab = str_repeat(" ", 8);
+$href = "/crm/_plugins/darkmode/public/css/darkmode.css";
+//$link = "<link rel=\"stylesheet\" href=\"$href\\?ver=\d+\.\d+\.\d+\">";
+$link = "<link rel=\"stylesheet\" href=\"$href\\?v=[0-9a-f]{40}\">";
+$tab  = str_repeat(" ", 8);
 
 switch(preg_match("|$href|", $html))
 {
     case 0:
         // Not Found!
-        $spot = preg_quote("{% block stylesheets %}");
-        $html = preg_replace("|^(\s*$spot)|m", "$tab$link\n\$1", $html);
-        $changed = true;
-        $logger->info("Dark Mode enabled");
         break;
     case 1:
         // Found!
-        $logger->info("Stylesheet darkmode.css is already included, did something go wrong?");
+        $html = preg_replace("|^\s*$link\s|ms", "", $html);
+        $changed = true;
+        $logger->info("Dark Mode disabled");
         break;
     case false:
         // Error!
