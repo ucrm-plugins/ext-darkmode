@@ -14,25 +14,31 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.1",
-        "monolog/monolog": "^3.4"
+
+        "ucrm-plugins/sdk-support": "*"
     },
     "autoload": {
-        "files": [ "globals.php" ]
     },
     "repositories": [
         {
             "type": "path",
-            "url": "../../../sdk/*",
+            "url": "../../sdk/*",
             "options": {
                 "symlink": true
             }
         },
         {
             "type": "path",
-            "url": "../../../../../spaethtech/php-monorepo/lib/*",
+            "url": "../../../../spaethtech/php-monorepo/lib/*",
             "options": {
                 "symlink": true
             }
         }
-    ]
+    ],
+    "archive": {
+        "exclude": [
+            "zip/",
+            "composer.lock"
+        ]
+    }
 }
