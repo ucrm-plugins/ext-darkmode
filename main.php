@@ -3,8 +3,8 @@
 
 require_once __DIR__."/vendor/autoload.php";
 
-use SpaethTech\UCRM\SDK\PluginLogger;
+use SpaethTech\UCRM\SDK\PluginLog;
 
-$logger = new PluginLogger();
+$logger = new PluginLog();
 //$logger->create("TEST\n");
 $logger->append("TEST\n");

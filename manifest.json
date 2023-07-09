@@ -18,6 +18,13 @@
     },
     "configuration": [
         {
+            "key": "devMode",
+            "label": "Development Mode?",
+            "description": "When enabled, development only features are available for this Plugin.",
+            "type": "checkbox",
+            "required": 0
+        },
+        {
             "key": "logErrors",
             "label": "Log Errors?",
             "description": "When enabled, errors are shown in the Plugin's log file.",
