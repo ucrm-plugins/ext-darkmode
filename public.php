@@ -1,18 +1,10 @@
-<?php
+<?php /** @noinspection PhpUnhandledExceptionInspection */
 // This Plugin does nothing when scheduled or manually executed!
 
 require_once __DIR__."/vendor/autoload.php";
 
-use SpaethTech\UCRM\SDK\Data\Tables\AppKeyTable;
+use SpaethTech\UCRM\SDK\Data\Collections\OptionCollection;
 use SpaethTech\UCRM\SDK\Data\Tables\OptionTable;
-use SpaethTech\UCRM\SDK\Data\Tables\PluginTable;
-use SpaethTech\UCRM\SDK\PluginConfig;
-use SpaethTech\UCRM\SDK\PluginManifest;
-use SpaethTech\UCRM\SDK\PluginDatabase;
-use SpaethTech\UCRM\SDK\PluginUcrm;
-use SpaethTech\UCRM\SDK\UcrmDatabase;
-use SpaethTech\UCRM\SDK\UcrmVersion;
-use SpaethTech\UCRM\SDK\UcrmParameters;
 use SpaethTech\UCRM\SDK\Plugin;
 
 $plugin = new Plugin();
@@ -45,8 +37,11 @@ $plugin = new Plugin();
 //$test = OptionTable::all();
 
 //$test = OptionTable::where("option_id = 4");
-$test = OptionTable::where("option_id = 4");
+/** @var OptionCollection $test */
+$options = OptionTable::where("option_id >= 4 and option_id <= 6");
+//var_dump($options->each(fn($o) => print_r($o)));
+//var_dump($options);
 
+//$collection = new Collection([ "a", "b" ]);
+//var_dump($collection);
 
-//$test = PluginTable::all();
-var_dump($test);
