@@ -3,9 +3,8 @@
 
 require_once __DIR__."/vendor/autoload.php";
 
-use SpaethTech\UCRM\SDK\Data\Collections\OptionCollection;
-use SpaethTech\UCRM\SDK\Data\Tables\OptionTable;
-use SpaethTech\UCRM\SDK\Plugin;
+use Data\Collections\OptionCollection;
+use Data\Tables\OptionTable;
 
 $plugin = new Plugin();
 //
