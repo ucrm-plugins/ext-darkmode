@@ -1,23 +1,24 @@
 <?php /** @noinspection DuplicatedCode */
 declare(strict_types=1);
 
+use DI\ContainerBuilder;
+use SpaethTech\UCRM\SDK\Plugin;
+use SpaethTech\UCRM\SDK\Server;
+
 require_once __DIR__."/vendor/autoload.php";
 
-global $_MANIFEST, $_CONFIG;
+$builder = new ContainerBuilder();
+$builder->addDefinitions("config.php");
+$container = $builder->build();
 
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
-use SpaethTech\UCRM\SDK\UI;
-
-$logger = new Logger(PLUGIN_NAME);
-$logger->pushHandler(new StreamHandler(PLUGIN_DIR."/data/plugin.log"));
+$plugin = new Plugin($container);
+$logger = $plugin->getLogger();
 
 const TWIG_HTML_FILE = "/usr/src/ucrm/app/Resources/views/base.html.twig";
 //const TWIG_CACHE_DIR = "/usr/src/ucrm/app/cache/prod/twig";
 
 // https://uisp.dev/crm/assets/images/favicon/favicon-152.png?v=697178f83c86868c9dc5c48123d4c34de84b32b9
 
-//$plugin = PLUGIN_NAME;
 $version = sha1(microtime(true).mt_rand(10000,90000));
 
 $changed = false;
@@ -49,7 +50,7 @@ if($changed)
 {
     file_put_contents(TWIG_HTML_FILE, $html);
     //exec("rm -rf ".TWIG_CACHE_DIR);
-    UI::clearTwigCache();
+    Server::clearTwigCache();
     $logger->info("Cleared twig template cache");
 }
 

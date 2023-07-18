@@ -3,44 +3,41 @@
 
 require_once __DIR__."/vendor/autoload.php";
 
-use Data\Collections\OptionCollection;
-use Data\Tables\OptionTable;
+use DI\ContainerBuilder;
+use SpaethTech\UCRM\SDK\Plugin;
+use SpaethTech\UCRM\SDK\Server;
 
-$plugin = new Plugin();
-//
-//var_dump(PLUGIN_DIR);
-//var_dump($plugin->getDataPath());
-//
-//var_dump(UcrmParameters::get("secret"));
-//var_dump(PluginManifest::get("information.name"));
-////Logger::debugPlugin(Manifest::get("information"));
-//var_dump(PluginManifest::get("information"));
-//var_dump(PluginConfig::get());
-//
-////var_dump($plugin->getCryptoKey()->saveToAsciiSafeString());
-//var_dump($plugin->getMode());
-//
-//var_dump(PluginUcrm::get("pluginAppKey"));
-//var_dump(UcrmVersion::get("version"));
-//
-//$db = new PluginDatabase();
-//$pdo = $db->connect();
-//$permissions = $db->permissions();
-//var_dump($permissions);
-//
-//$pdo = UcrmDatabase::connect();
+$builder = new ContainerBuilder();
+$builder->addDefinitions("config.php");
+$container = $builder->build();
 
-//$test = UcrmDatabase::query("SELECT * FROM app_key WHERE name = 'plugin_darkmode'");
-//$test = UcrmDatabase::select("app_key", [ "name", "type", "plugin_id" ]);
-//$test = AppKeyTable::all();
-//$test = OptionTable::all();
+$plugin = new Plugin($container);
+$logger = $plugin->getLogger();
+$server = $plugin->getServer();
 
-//$test = OptionTable::where("option_id = 4");
-/** @var OptionCollection $test */
-$options = OptionTable::where("option_id >= 4 and option_id <= 6");
-//var_dump($options->each(fn($o) => print_r($o)));
-//var_dump($options);
 
-//$collection = new Collection([ "a", "b" ]);
-//var_dump($collection);
+$manifest = $plugin->getManifest();
+$test = $manifest->get("information.name");
+var_dump($test);
 
+$config = $plugin->getConfig();
+$test = $config->get("logErrors");
+//var_dump($test);
+//$config->set("logErrors", true);
+//$config->save();
+
+$ucrm = $plugin->getUcrm();
+$test = $ucrm->get("ucrmPublicUrl");
+//var_dump($test);
+
+$parameters = $server->getParameters();
+$test = $parameters->get();
+var_dump($test);
+
+$version = $server->getVersion();
+$test = $version->get();
+var_dump($test);
+
+$plugins = $server->getPlugins();
+foreach($plugins as $p)
+    var_dump($p->getRootPath());
