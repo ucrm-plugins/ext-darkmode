@@ -12,5 +12,6 @@ return [
         ->constructor("plugin")
         ->method("pushHandler", new StreamHandler("data/plugin.log")),
 
+
     // ...
 ];
