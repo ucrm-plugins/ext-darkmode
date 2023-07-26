@@ -16,6 +16,7 @@
         "php": ">=8.1",
 
         "ucrm-plugins/sdk-core": "*",
+        "ucrm-plugins/sdk-collections": "*",
         "ucrm-plugins/sdk-config": "*",
         "ucrm-plugins/sdk-data": "*"
     },
@@ -26,14 +27,7 @@
             "type": "path",
             "url": "../../sdk/*",
             "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../../../../spaethtech/php-monorepo/lib/*",
-            "options": {
-                "symlink": true
+                "symlink": false
             }
         }
     ],

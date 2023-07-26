@@ -5,14 +5,12 @@
 require_once __DIR__."/vendor/autoload.php";
 
 use DI\ContainerBuilder;
-use Psr\Log\LoggerInterface;
-use SpaethTech\UCRM\SDK\Plugin;
-use SpaethTech\UCRM\SDK\REST\Endpoints\Country;
-use SpaethTech\UCRM\SDK\Server;
-use SpaethTech\UCRM\SDK\Slim\Psr7\Http\Message\JsonResponse;
-use SpaethTech\UCRM\SDK\Support\UrlWrapper;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use SpaethTech\UCRM\SDK\Collections\Collection;
+use SpaethTech\UCRM\SDK\Collections\Types\StringCollectionType;
+use SpaethTech\UCRM\SDK\Plugin;
+use SpaethTech\UCRM\SDK\REST\Endpoints\Country;
 
 $builder = new ContainerBuilder();
 $builder->addDefinitions("config.php");
@@ -27,12 +25,24 @@ $user = $server->getAuthenticatedUser();
 
 //var_dump($user);
 
+
+$collection = new Collection(new StringCollectionType(), "a", "b", "c");
+$test = $collection->first();
+var_dump($test);
+
+
 //$test = $plugin->request("GET", "/version");
 //$test = $plugin->parseResponse($test);
 //$test = $plugin->getObjects(Country::class, "/countries");
 $test = $plugin->get(Country::class);
+//$test = Country::get();
+foreach($test as $t)
+{
+    var_dump((string)$t);
+}
 
-var_dump($test);
+
+//var_dump($test);
 
 
 //$manifest = $plugin->getManifest();
