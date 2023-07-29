@@ -5,7 +5,7 @@
         "displayName": "Dark Mode",
         "description": "A super-simple dark mode plugin for UCRM.",
         "url": "https://github.com/ucrm-plugins/ext-darkmode.git",
-        "version": "1.0.75",
+        "version": "1.0.76",
         "unmsVersionCompliancy": {
             "min": "2.0.0",
             "max": null
