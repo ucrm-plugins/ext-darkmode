@@ -26,9 +26,10 @@ $user = $server->getAuthenticatedUser();
 //var_dump($user);
 
 
-$collection = new Collection(new StringCollectionType(), "a", "b", "c");
-$test = $collection->first();
-var_dump($test);
+
+//$collection = new Collection(new StringCollectionType(), "a", "b", "c");
+//$test = $collection->first();
+//var_dump($test);
 
 
 //$test = $plugin->request("GET", "/version");
@@ -40,6 +41,7 @@ foreach($test as $t)
 {
     var_dump((string)$t);
 }
+
 
 
 //var_dump($test);
