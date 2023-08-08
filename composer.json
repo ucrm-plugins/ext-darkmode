@@ -18,7 +18,8 @@
         "ucrm-plugins/sdk-core": "*",
         "ucrm-plugins/sdk-collections": "*",
         "ucrm-plugins/sdk-config": "*",
-        "ucrm-plugins/sdk-data": "*"
+        "ucrm-plugins/sdk-data": "*",
+        "ucrm-plugins/sdk-json": "*"
     },
     "autoload": {
     },

@@ -2,15 +2,19 @@
 /** @noinspection PhpUnhandledExceptionInspection */
 // This Plugin does nothing when scheduled or manually executed!
 
-require_once __DIR__."/vendor/autoload.php";
-
 use DI\ContainerBuilder;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use SpaethTech\UCRM\SDK\Collections\Collection;
-use SpaethTech\UCRM\SDK\Collections\Types\StringCollectionType;
 use SpaethTech\UCRM\SDK\Plugin;
-use SpaethTech\UCRM\SDK\REST\Endpoints\Country;
+use SpaethTech\UCRM\SDK\REST\EndpointBuilder;
+use SpaethTech\UCRM\SDK\REST\Endpoints\Client;
+use SpaethTech\UCRM\SDK\REST\Endpoints\ClientTag;
+use SpaethTech\UCRM\SDK\REST\Endpoints\State;
+
+require_once __DIR__."/vendor/autoload.php";
+
+if(!defined("PLUGIN_DIR"))
+    define("PLUGIN_DIR", realpath(__DIR__));
 
 $builder = new ContainerBuilder();
 $builder->addDefinitions("config.php");
@@ -22,25 +26,58 @@ $server = $plugin->getServer();
 $client = $server->getClient();
 
 $user = $server->getAuthenticatedUser();
-
 //var_dump($user);
 
+EndpointBuilder::build("State");
+
+$test = $plugin->getAll(State::class);
+echo "<pre>$test</pre>";
 
 
-//$collection = new Collection(new StringCollectionType(), "a", "b", "c");
-//$test = $collection->first();
-//var_dump($test);
+
+exit;
+
+//$test = $plugin->getAll(Client::class);
+
+//$test = Client::getById(1);
+//$test = ClientTag::getById(3);
+//$test = ClientTag::get();
+$newTag = ClientTag::create("Owners");
+$test = $newTag->post();
+echo "POST: <pre>$test</pre>";
+
+$test->setName("Owner's Spouse");
+$test = $test->patch();
+echo "PATCH: <pre>$test</pre>";
+//
+//$test->delete();
+//$test = ClientTag::get();
+//echo "AFTER DELETE: <pre>$test</pre>";
+
+//$test = $plugin->delete(ClientTag::class, [ "id" => 18 ]);
+//echo "<pre>".($test ? "T" : "F")."</pre>";
 
 
-//$test = $plugin->request("GET", "/version");
-//$test = $plugin->parseResponse($test);
-//$test = $plugin->getObjects(Country::class, "/countries");
-$test = $plugin->get(Country::class);
-//$test = Country::get();
-foreach($test as $t)
-{
-    var_dump((string)$t);
-}
+//$test = $plugin->getAll(ClientTag::class, [ "clientId" => 1 ]);
+//$test = $test->first()->getId();
+//$test = (string)$test;
+
+/*
+$tag = ClientTag::create("VIP");
+$new = $plugin->postOne($tag);
+echo "<pre>$new</pre>";
+*/
+
+
+//echo "<pre>$test</pre>";
+
+
+
+
+//foreach($test as $t)
+//{
+//    var_dump((string)$t);
+//}
 
 
 
