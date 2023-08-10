@@ -9,6 +9,7 @@ use SpaethTech\UCRM\SDK\Plugin;
 use SpaethTech\UCRM\SDK\REST\EndpointBuilder;
 use SpaethTech\UCRM\SDK\REST\Endpoints\Client;
 use SpaethTech\UCRM\SDK\REST\Endpoints\ClientTag;
+use SpaethTech\UCRM\SDK\REST\Endpoints\Fee;
 use SpaethTech\UCRM\SDK\REST\Endpoints\State;
 
 require_once __DIR__."/vendor/autoload.php";
@@ -32,6 +33,9 @@ EndpointBuilder::build("State");
 
 $test = $plugin->getAll(State::class);
 echo "<pre>$test</pre>";
+
+
+Fee::get([], [ "limit" => 1, "" ]);
 
 
 
