@@ -43,3 +43,4 @@ if($change)
     $logger->info("Cleared twig template cache");
 }
 
+$logger->debug("Enable Hook!");

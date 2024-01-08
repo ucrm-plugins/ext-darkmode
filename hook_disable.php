@@ -54,4 +54,4 @@ if($changed)
     $logger->info("Cleared twig template cache");
 }
 
-
+$logger->debug("Disable Hook!");

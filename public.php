@@ -11,6 +11,7 @@ use SpaethTech\UCRM\SDK\REST\Endpoints\Client;
 use SpaethTech\UCRM\SDK\REST\Endpoints\ClientTag;
 use SpaethTech\UCRM\SDK\REST\Endpoints\Fee;
 use SpaethTech\UCRM\SDK\REST\Endpoints\State;
+use SpaethTech\UCRM\SDK\REST\Endpoints\User;
 
 require_once __DIR__."/vendor/autoload.php";
 
@@ -29,14 +30,15 @@ $client = $server->getClient();
 $user = $server->getAuthenticatedUser();
 //var_dump($user);
 
-EndpointBuilder::build("State");
+//EndpointBuilder::build("State");
 
-$test = $plugin->getAll(State::class);
+//$test = $plugin->getAll(State::class);
+//echo "<pre>$test</pre>";
+
+
+$test = Client::getCollection();
 echo "<pre>$test</pre>";
-
-
-Fee::get([], [ "limit" => 1, "" ]);
-
+//$test = User::delete([])
 
 
 exit;
