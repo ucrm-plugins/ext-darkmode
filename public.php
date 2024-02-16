@@ -25,7 +25,7 @@ $container = $builder->build();
 $plugin = new Plugin($container);
 $logger = $plugin->getLogger();
 $server = $plugin->getServer();
-$client = $server->getClient();
+$client = $server->createRestClient();
 
 $user = $server->getAuthenticatedUser();
 //var_dump($user);
