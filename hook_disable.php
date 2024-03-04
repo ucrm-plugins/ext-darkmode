@@ -1,12 +1,19 @@
 <?php
-/** @noinspection PhpUnhandledExceptionInspection */
+/**
+ * @noinspection DuplicatedCode
+ * @noinspection PhpIncludeInspection
+ * @noinspection PhpMultipleClassDeclarationsInspection
+ * @noinspection PhpUnhandledExceptionInspection
+ */
 declare(strict_types=1);
+require_once __DIR__."/vendor/autoload.php";
+
+if(!defined("PLUGIN_DIR"))
+    define("PLUGIN_DIR", realpath(__DIR__));
 
 use DI\ContainerBuilder;
 use SpaethTech\UCRM\SDK\Plugin;
 use SpaethTech\UCRM\SDK\Support\UrlWrapper;
-
-require_once __DIR__."/vendor/autoload.php";
 
 $builder = new ContainerBuilder();
 $builder->addDefinitions("config.php");
@@ -36,8 +43,6 @@ switch(preg_match("|{$url->getPath()}|", $html))
         // Found!
         //$html = preg_replace('|^\s*<link rel="stylesheet" href="'.$url->pregEscaped().'">\s|ms', "", $html);
         $html = preg_replace("|^\s*<link rel=\"stylesheet\" href=\"{$url->pregEscaped()}\">\s|ms", "", $html);
-
-
         $changed = true;
         $logger->info("Dark Mode disabled");
         break;

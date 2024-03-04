@@ -15,11 +15,8 @@
     "require": {
         "php": ">=8.1",
 
-        "ucrm-plugins/sdk-core": "*",
-        "ucrm-plugins/sdk-collections": "*",
-        "ucrm-plugins/sdk-config": "*",
-        "ucrm-plugins/sdk-data": "*",
-        "ucrm-plugins/sdk-json": "*"
+        "ucrm-plugins/sdk-core": "*"
+
     },
     "autoload": {
     },

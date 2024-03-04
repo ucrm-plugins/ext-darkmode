@@ -1,12 +1,18 @@
-<?php /** @noinspection PhpUnused, PhpMultipleClassDeclarationsInspection */
+<?php
+/**
+ * @noinspection DuplicatedCode
+ * @noinspection PhpIncludeInspection
+ * @noinspection PhpMultipleClassDeclarationsInspection
+ * @noinspection PhpUnhandledExceptionInspection
+ */
 declare(strict_types=1);
+require_once __DIR__."/vendor/autoload.php";
 
 use GuzzleHttp\Client;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Psr\Http\Client\ClientInterface;
 use Psr\Log\LoggerInterface;
-use SpaethTech\UCRM\SDK\Plugin;
 use SpaethTech\UCRM\SDK\PluginUcrm;
 use SpaethTech\UCRM\SDK\Support\UrlWrapper;
 

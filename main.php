@@ -1,10 +1,24 @@
 <?php
-// This Plugin does nothing when scheduled or manually executed!
-
+/**
+ * @noinspection DuplicatedCode
+ * @noinspection PhpIncludeInspection
+ * @noinspection PhpMultipleClassDeclarationsInspection
+ * @noinspection PhpUnhandledExceptionInspection
+*/
+declare(strict_types=1);
 require_once __DIR__."/vendor/autoload.php";
 
-use SpaethTech\UCRM\SDK\PluginLog;
+if(!defined("PLUGIN_DIR"))
+    define("PLUGIN_DIR", realpath(__DIR__));
 
-$logger = new PluginLog();
-//$logger->create("TEST\n");
-$logger->append("TEST\n");
+use DI\ContainerBuilder;
+use SpaethTech\UCRM\SDK\Plugin;
+
+$builder = new ContainerBuilder();
+$builder->addDefinitions("config.php");
+$container = $builder->build();
+
+$plugin = new Plugin($container);
+$logger = $plugin->getLogger();
+
+$logger->info("This plugin has no manual or scheduled functionality!");
